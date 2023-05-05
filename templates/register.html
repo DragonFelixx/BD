@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+</head>
+<body>
+<h1>Registration Form</h1>
+<form method="POST" action="{{ url_for('register') }}">
+    <label for="login">Login:</label><br>
+    <input type="text" id="login" name="login"><br>
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password"><br>
+    <label for="nickname">Nickname:</label><br>
+    <input type="text" id="nickname" name="nickname"><br><br>
+    <input type="submit" value="Register">
+    <br>
+    <a href="{{ url_for('index') }}">Back to Main Page</a>
+</form>
+</body>
+</html>

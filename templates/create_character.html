@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Character</title>
+</head>
+<body>
+<h1>Create Character</h1>
+<form method="POST" action="{{ url_for('create_character') }}">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        {{ form.name.label() }}
+        {{ form.name(class_="form-control", placeholder="Enter name") }}
+        {% if form.name.errors %}
+        <div class="alert alert-danger">
+            {% for error in form.name.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        {{ form.age.label() }}
+        {{ form.age(class_="form-control", placeholder="Enter age") }}
+        {% if form.age.errors %}
+        <div class="alert alert-danger">
+            {% for error in form.age.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        {{ form.gender_id.label() }}
+        {{ form.gender_id(class_="form-control") }}
+        <small class="form-text text-muted">Choose a gender from the list or enter a custom gender</small>
+        {{ form.custom_gender(class_="form-control", placeholder="Enter custom gender") }}
+        {% if form.gender_id.errors %}
+        <div class="alert alert-danger">
+            {% for error in form.gender_id.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        {{ form.race_id.label() }}
+        {{ form.race_id(class_="form-control") }}
+        <small class="form-text text-muted">Choose a race from the list or enter a custom race</small>
+        {{ form.custom_race(class_="form-control", placeholder="Enter custom race") }}
+        {% if form.race_id.errors %}
+        <div class="alert alert-danger">
+            {% for error in form.race_id.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        {{ form.description.label() }}
+        {{ form.description(class_="form-control", placeholder="Enter character description") }}
+        {% if form.description.errors %}
+        <div class="alert alert-danger">
+            {% for error in form.description.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    <input type="submit" class="btn btn-primary" value="Create Character">
+</form>
+<br>
+<a href="{{ url_for('index') }}">Back to main page</a>
+</body>
+</html>

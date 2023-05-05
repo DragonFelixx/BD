@@ -1,0 +1,7 @@
+Jinja2
+SQLAlchemy==2.0.9
+Flask
+Flask-Login
+Flask-SQLAlchemy
+wtforms
+wtforms-alchemy

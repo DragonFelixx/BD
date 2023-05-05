@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Character</title>
+  </head>
+  <body>
+    <h1>Character</h1>
+    <p><strong>Name:</strong> {{ character.name }}</p>
+    <p><strong>Age:</strong> {{ character.age }}</p>
+    <p><strong>Gender:</strong> {{ character.gender.name if character.gender is not none else character.custom_gender }}</p>
+    <p><strong>Race:</strong> {{ character.race.name if character.race is not none else character.custom_race }}</p>
+    <p><strong>Description:</strong> {{ character.description }}</p>
+    <p><strong>Owner:</strong> {{ character.user_nickname }}</p>
+    <br>
+    <button type="button" onclick="deleteCharacter({{ character_id }})">Delete Character</button>
+    <a href="{{ url_for('index') }}">Back to Main Page</a>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      function deleteCharacter(character_id) {
+  if (confirm("Are you sure you want to delete this character?")) {
+    $.ajax({
+      url: "/characters/" + character_id,
+      type: "DELETE",
+      success: function(result) {
+        window.location.href = "{{ url_for('index') }}";
+      },
+      error: function(xhr, status, error) {
+        alert("Failed to delete character. Please try again.");
+      }
+    });
+  }
+}
+    </script>
+  </body>
+</html>
